@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Badge,
   Card,
@@ -9,17 +10,21 @@ import {
   TableRow,
 } from "@tremor/react";
 import { useAppSelector } from "../hooks/store";
-import React from "react";
+import { useUserActions } from "../hooks/useUserActions";
 
 export function ListOfUsers() {
   const users = useAppSelector((state) => state.users);
+  const { removeUser } = useUserActions();
 
   return (
-    <Card className="rounded-xl">
+    <Card className="rounded-xl mt-9">
       <div className="sm:flex sm:items-center sm:justify-between sm:space-x-10">
         <div>
           <h3 className="font-semibold text-content-strong dark:text-dark-content-strong">
-            Users <Badge className="rounded-2xl">{users.length}</Badge>
+            Users{" "}
+            <Badge className="rounded-2xl bg-sky-200 text-blue-800">
+              {users.length}
+            </Badge>
           </h3>
           <p className="mt-1 text-default leading-6 text-content dark:text-dark-content">
             Overview of all registered users in the system.
@@ -67,6 +72,7 @@ export function ListOfUsers() {
               <TableCell>
                 <button className="mr-3">
                   <svg
+                    aria-label="Edit"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -81,8 +87,9 @@ export function ListOfUsers() {
                     />
                   </svg>
                 </button>
-                <button>
+                <button onClick={() => removeUser(item.id)}>
                   <svg
+                    aria-label="Delete"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
