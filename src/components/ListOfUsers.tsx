@@ -8,41 +8,12 @@ import {
   TableHeaderCell,
   TableRow,
 } from "@tremor/react";
+import { useAppSelector } from "../hooks/store";
 import React from "react";
 
-const users: {
-  id: string;
-  name: string;
-  email: string;
-  github: string;
-}[] = [
-  {
-    id: "1",
-    name: "Ricky Cortés",
-    email: "rickycortes668668@gmail.com",
-    github: "RickyBv1",
-  },
-  {
-    id: "4",
-    name: "María González",
-    email: "mariagonzales58@gmail.com",
-    github: "MariaGonzalez",
-  },
-  {
-    id: "2",
-    name: "Jorge Ramírez",
-    email: "jorgeramirez24@gmail.com",
-    github: "JorgeRamirez",
-  },
-  {
-    id: "3",
-    name: "Carlos Torres",
-    email: "carlostorres67@gmail.com",
-    github: "CarlosTorres",
-  },
-];
-
 export function ListOfUsers() {
+  const users = useAppSelector((state) => state.users);
+
   return (
     <Card className="rounded-xl">
       <div className="sm:flex sm:items-center sm:justify-between sm:space-x-10">
