@@ -1,7 +1,12 @@
 import "./App.css";
+import { ListOfUsers } from "./components/ListOfUsers";
 
 function App() {
-  return <h1 className="font-bold">this is a CRUD app</h1>;
+  return (
+    <>
+      <ListOfUsers />
+    </>
+  );
 }
 
 export default App;
