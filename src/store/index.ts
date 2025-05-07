@@ -25,9 +25,9 @@ const syncWithDatabaseMiddleware: Middleware =
       })
         .then((res) => {
           if (res.ok) {
-            toast.success(`Usuario ${payload} eliminado correctamente`);
+            toast.success(`User ${payload} deleted correctly`);
           }
-          // throw new Error("Error al eliminar el usuario");
+          // throw new Error("Error deleting the user");
         })
         .catch((err) => {
           // toast.error(`Error deleting user ${userIdToRemove}`);
